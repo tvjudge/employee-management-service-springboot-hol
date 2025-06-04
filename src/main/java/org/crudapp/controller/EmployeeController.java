@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
+//added imports for logger libt=raries
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -31,7 +31,7 @@ public class EmployeeController {
 
     @Autowired
     private EmployeeRepository employeeRepository;
-
+//added logger variable
     private static final Logger logger = LoggerFactory.getLogger(EmployeeController.class);
 
     @GetMapping
@@ -43,6 +43,7 @@ public class EmployeeController {
     @PostMapping
     public ResponseEntity<Employee> createEmployee(@Valid @RequestBody Employee employee)
     {
+//        added logger statement
         logger.info("Creating new employee with details: {}", employee);
         Employee savedEmployee = employeeRepository.save(employee);
         return new ResponseEntity<>(savedEmployee, HttpStatus.CREATED);
@@ -61,7 +62,7 @@ public class EmployeeController {
     // Update employee REST API
     @PutMapping("{id}")
     public ResponseEntity<Employee> updateEmployee(@PathVariable long id,@RequestBody Employee employeeDetails) {
-
+// logging code snippet added below
         logger.info("going to update employee with id: {}", id);
         Employee updateEmployee = employeeRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Employee not exist with id: " + id));
@@ -79,7 +80,7 @@ public class EmployeeController {
     // build delete employee REST API
     @DeleteMapping("{id}")
     public ResponseEntity<HttpStatus> deleteEmployee(@PathVariable long id){
-
+//added logging snipper below
         logger.info("Attempting deletion of  employee with id: {}", id);
         Employee employee = employeeRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Employee not exist with id: " + id));
