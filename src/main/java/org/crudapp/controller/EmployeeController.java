@@ -85,6 +85,7 @@ public class EmployeeController {
                 .orElseThrow(() -> new ResourceNotFoundException("Employee not exist with id: " + id));
 
         employeeRepository.delete(employee);
+        //added logging confirming deletion
         logger.info("Deleted employee with id: {}", id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 
