@@ -13,7 +13,7 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
+    //Validation already exits in course provided example
     // Enforces that the firstName field cannot be blank or null
     @NotBlank(message = "First name is mandatory")
     @Column(name = "first_name")
